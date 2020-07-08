@@ -1,4 +1,7 @@
 *.log
+.env
 
 dist/
 node_modules/
+
+docker-compose.override.yml
