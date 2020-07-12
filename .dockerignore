@@ -1,0 +1,10 @@
+node_modules/
+dist/
+.env.example
+.gitignore
+docker-compose.override.yml
+docker-compose.yml
+LICENSE
+mongodb-init.sh
+README.md
+yarn-error.log
