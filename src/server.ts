@@ -1,6 +1,7 @@
+import router from './router'
+import logger from './logger'
 import mongo from './services/mongo'
 import session from './services/session'
-import logger from './logger'
 import express, { Express, Request, Response } from 'express'
 
 const app: Express = express()
@@ -11,6 +12,7 @@ app.use(session)
 
 /// Application endpoints
 app.get('/', (_: Request, res: Response) => res.send('It works'))
+app.use('/', router) // Register all application routes
 app.use('*', (_: Request, res: Response) => res.status(404).send('Not found'))
 
 /// Http server configuration
