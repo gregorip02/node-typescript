@@ -13,6 +13,9 @@
     "name": "Gregori Piñeres",
     "email": "gregori.pineres02@gmail.com"
   },
+  "engines": {
+    "node": ">=12"
+  },
   "license": "MIT",
   "devDependencies": {
     "@types/connect-redis": "^0.0.14",

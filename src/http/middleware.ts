@@ -8,18 +8,18 @@ interface MiddlewareCandidate {
 }
 
 // All aplication middlewares
-export const middlewares: Array<MiddlewareCandidate> = [
+const middlewareRegistry: Array<MiddlewareCandidate> = [
   {
     name: 'guest',
     handler: guestHandler
   }
-];
+]
 
 // Middleware service provider
 export const provider: Map<String, RequestHandler> = new Map<String, RequestHandler>()
 
 // Register all middlewares in the provider
-middlewares.forEach((candidate: MiddlewareCandidate) => {
+middlewareRegistry.forEach((candidate: MiddlewareCandidate) => {
   // Prevent duplication of middlewares registration
   if (! provider.has(candidate.name)) {
     provider.set(candidate.name, candidate.handler)
@@ -28,9 +28,9 @@ middlewares.forEach((candidate: MiddlewareCandidate) => {
 
 // Get an array of request handler by middleware candidate names.
 export const apply: Function = (names: Array<String> = []): Array<RequestHandler> => {
-  const uniqueNames: Array<String> = Array.from((new Set(names)).values())
+  const middlewares = (new Set(names)).values()
 
-  return uniqueNames
+  return Array.from(middlewares)
     .filter(name => provider.has(name))
     .map(name => provider.get(name) as RequestHandler)
 }
