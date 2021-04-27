@@ -37,6 +37,6 @@
     "express-session": "^1.17.1",
     "mongoose": "^5.9.22",
     "nodemailer": "^6.4.10",
-    "redis": "^3.0.2"
+    "redis": "^3.1.1"
   }
 }
